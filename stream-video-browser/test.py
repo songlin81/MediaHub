@@ -12,21 +12,15 @@ import time
 import os
 
 # ---------------------------------------------------------------------
-
-# keys
 KEY_R = ord('r')  # start recording
 KEY_S = ord('s')  # stop recording
 KEY_Q = ord('q')  # quit
 KEY_ESC = 27  # quit
 
-# font
-FONT = cv2.FONT_HERSHEY_PLAIN
+FONT = cv2.FONT_HERSHEY_PLAIN   # font
 
-# video file size
-VIDEO_FILE_SIZE = 10 * 1024 * 1024  # split to 10 MB files
-
+VIDEO_FILE_SIZE = 10 * 1024 * 1024  # video file size: split to 10 MB files
 # ---------------------------------------------------------------------
-
 # states
 running = True
 recording = False
@@ -34,11 +28,8 @@ create_new_file = True
 
 # window name
 window_name = time.strftime("%Y.%m.%d  %H.%M.%S", time.localtime())
-
 # ---------------------------------------------------------------------
-
-# create VideoCapture
-vcap = cv2.VideoCapture(0)  # 0=camera
+vcap = cv2.VideoCapture(0)  # create VideoCapture: 0=camera
 
 # check if video capturing has been initialized already
 if not vcap.isOpened():
@@ -135,6 +126,6 @@ while running:
         running = False
 
 # Release everything
-# fout.release()
+fout.release()
 vcap.release()
 cv2.destroyAllWindows()
